@@ -1,0 +1,23 @@
+# Pipeline Description
+- CircleCI was used as the CI/CD software in this application.
+- CircleCI is connected to this Github repo, so it watches the repo for changes and when changes are pushed to this repo, CircleCI is triggered to start the pipeline.
+- The pipeline is configured by the config.yml file in .circleci folder
+- Environment Variables are added to CircleCI which include:
+- - AWS credentials which are AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY
+- - AWS related info such as AWS_DEFAULT_REGION
+- - Database connection credentials which are the database host, database name, username and password.
+- - The elastic beanstalk app and environment which serves the backend
+- - The unique name of the S3 bucket which holds the frontend files
+- - Secrets such as the JWT_SECRET
+- The pipeline uses a Docker container to create a virtual environment in which CI/CD operations are done.
+- The pipeline starts by installing Node.js and its related technologies such as npm and yarn.
+- The pipeline then installs aws-cli for the operations related to deploying to S3 bucket
+- The pipeline installs eb-cli for deploying the backend
+- Checkout is used to fetch the contents of the github repo in the environment
+- The environment variable are set along with AWS credentials
+- The dependencies of the frontend and backend are installed
+- Build folders are generated for the frontend and backend
+- Linting and Testing "Templates" are prepared
+- Deployment of the frontend to the S3 bucket is done.
+- Deployment of the backend API to the elastic beanstalk instance is done.
+- With this, the pipeline is successfully executed and the application gets fully deployed with automated pipelines.
