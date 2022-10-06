@@ -35,7 +35,7 @@ jobs:
       - run:
           name: Front-End End-to-End Testing
           command: echo "Executing End-to-End Tests"
-      # Building the frontend app
+      # Building the front-end app
       - run:
           name: Front-End Build
           command: npm run frontend:build
