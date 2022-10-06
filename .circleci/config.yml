@@ -51,3 +51,12 @@ jobs:
       - run:
           name: Deploying the API
           command: npm run api:deploy
+
+workflows:
+    build-and-deploy:
+        jobs:
+            - build:
+                filters:
+                    branches:
+                        only: 
+                            - main
