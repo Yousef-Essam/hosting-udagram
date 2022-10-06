@@ -10,29 +10,36 @@ jobs:
       # The base image can run most needed actions with orbs
       - image: "cimg/base:stable"
     steps:
-      # Install node, aws-cli and eb-cli then checkout code
+      # Installing node, aws-cli and eb-cli then checkout code
       - node/install
       - aws-cli/setup
       - eb/setup
       - checkout
-      # Using root level package.json to install dependencies in the frontend app
+      # Installing dependencies in the frontend app
       - run:
           name: Install Front-End Dependencies
           command: npm run frontend:install
-      # Install dependencies in the the backend API          
+      # Installing dependencies in the the backend API          
       - run:
           name: Install API Dependencies
           command: npm run api:install
-      # Lint the frontend
+      # Template for Linting the frontend
       - run:
           name: Front-End Lint
-          command: |
-            echo "Linting the frontend"
-      # Build the frontend app
+          command: echo "Linting the frontend"
+      # Templates for Testing the application
+      - run:
+          name: Front-End Unit Testing
+          command: echo "Executing Unit Tests"
+
+      - run:
+          name: Front-End End-to-End Testing
+          command: echo "Executing End-to-End Tests"
+      # Building the frontend app
       - run:
           name: Front-End Build
           command: npm run frontend:build
-      # Build the backend API      
+      # Building the backend API      
       - run:
           name: API Build
           command: npm run api:build
